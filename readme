@@ -1,0 +1,46 @@
+Super simple HTML5 audio player
+
+Introduction
+
+    Pourquoi Comment ? 100% vanilla javascript flavoured, sépration présentation code métier, non intrusive, image less, extensible,
+    greffons
+
+    Démo
+
+Le plugin
+
+    But ?, fonctionnement
+
+Features
+
+    - Super simple setup
+    - Multiple instance
+    - Plugin visualization
+    - Easy themeing !
+    - responsive
+
+How to
+
+    Quick start
+        super simple
+        avec des widgets
+        avec des widgets et un theme
+
+
+    Css
+
+    Plugins
+
+
+
+
+1 - Idée
+Simple, non intrusif, utilise des balises HTML5 standards pour son affichage, extensible et possibilité de greffons visuels.
+Nécessite un navigateur supportant la balise audio.
+
+2 - Fonctionnement
+Simple surcharge de l'audio elements
+
+3 - Les petits plus
+
+4 - Widgets d'interface

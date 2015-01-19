@@ -1,0 +1,40 @@
+/*
+    Progress
+*/
+
+/* Inderterminate */
+progress:not([value]) {
+    /* Styling here */
+}
+
+progress[value] {
+    /* Styling here */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* For IE10 */
+    color: red;
+
+    /* Get rid of default border in Firefox. */
+    border: none;
+
+    padding: 0em;
+    margin:0;
+    background-color: green;
+    width: 100%;
+    height: 100%;
+}
+/*
+    Range
+*/
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    margin: 0;
+    height: 100%;
+    background-color: transparent;
+}
+
+input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}

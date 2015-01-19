@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Audio player</title>
+    <meta name="description" content="">
+    <script src="core/audio.js"></script>
+    <script src="core/canvas.js"></script>
+    <script src="plugins/plugin.player.js"></script>
+    <script src="plugins/plugin.player.plugin.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/supersimple.css"/>
+</head>
+<body>
+
+    <audio id="player">
+        <source id="source" src="playlist/scrapy_-_Sad_Nights_In_Soho.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+        <input id="play" type="checkbox">
+        <label for="play"></label>
+
+        <canvas id="viz" width="40" height="32"></canvas>
+
+<script>
+    var L   = window.LibreJs = window.LibreJs   || {};
+    var Lp  = L.Plugins      = L.Plugins        || {};
+
+    var Player = Lp.Player;
+    var Plugin = Player.Plugin;
+
+    var playlist = [
+        {
+            src:"playlist/scrapy_-_Sad_Nights_In_Soho.mp3"
+        }
+    ];
+    var event = (isFirefox) ? "load" : 'DOMContentLoaded';
+
+    var _callback = function(){
+
+        var audioTag = window.document.getElementById('player');
+        var test = window.document.getElementById('viz');
+
+        var body = window.document.getElementsByTagName("body");
+
+        test.setAttribute('width', window.innerWidth);
+        test.setAttribute('height', window.innerHeight);
+
+        var v = window.document.getElementById('volume');
+        var vpb = window.document.getElementById('volume-progress-bar');
+        var pb = window.document.getElementById('playingBar');
+        var bb = window.document.getElementById('bufferingBar');
+        var play = window.document.getElementById('play');
+        var m  = window.document.getElementById('mute');
+        var d  = window.document.getElementById('duration');
+        var played  = window.document.getElementById('played');
+        var position  = window.document.getElementById('position');
+        var src = window.document.getElementById('source');
+        var vv = window.document.getElementById('volume-value');
+
+        var options = {
+            source: src,
+            bars: {
+                playing: pb,
+                buffered: bb,
+                volume: vpb
+            },
+            buttons: {
+                volume: v,
+                play: play,
+                mute: m,
+                position: position
+            },
+            display: {
+                duration: d,
+                volume: vv,
+                played: played
+            }
+        }
+
+        var demo = new Player(audioTag, options);
+        var plugin = new Plugin(demo.audioCtx, test);
+        demo.addPlugin(plugin);
+    };
+    var isFirefox = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1);
+    if(isFirefox) {
+        window.document.addEventListener('load',_callback());
+    }
+    else {
+        window.document.addEventListener('DOMContentLoaded',_callback());
+    }
+
+</script>
+</body>
+</html>
