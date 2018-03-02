@@ -1,10 +1,9 @@
+// Un seul et unique audio context donc le source node
 export default class Routing {
-    constructor(sourceNode) {
-        /** {} */
-        this.sourceNode = sourceNode;
+    constructor() {
         /**
-         * @type {Array}
+         * @type {Map<id, AudioContext>}
          */
-        this.outputs = [];
+        this.outputs = new Map();
     }
 }
