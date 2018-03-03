@@ -3,14 +3,16 @@
 // import Routing from "../core/audio/routing";
 // import AudioContext from "../core/audio/context";
 
+import AudioSource from "../core/audio/audio-source";
+
 let track = './demos/audio/sample.mp3';
 
-// 1 . Create audio context
-window.AudioContext = window.AudioContext||window.webkitAudioContext;
-let ctx = new AudioContext();
-ctx.src = track;
+let audioSrc = new AudioSource();
+audioSrc.load(track);
 
-ctx.autoplay = true;
+// audioSrc.gain(1);
+// audioSrc.start();
+
 // 2 . In ctx create sources <audio>, oscillator, steam
 // ctx.createMediaElementSource();
 
