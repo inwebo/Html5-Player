@@ -1,25 +1,18 @@
-import BaseContext from 'core/audio/context';
-import Graph from "../core/audio/nodes/graph-node";
-import Routing from "../core/audio/routing";
-/**
- * Sources sonores
- * @type {HTMLElement | null}
- */
-// audioCtx = document.getElementById("player");
+// import BaseAudioContext from 'core/audio/context';
+// import Graph from "../core/audio/nodes/graph-node";
+// import Routing from "../core/audio/routing";
+// import AudioContext from "../core/audio/context";
 
-/** @type {Routing} */
-let routing = new Routing();
-/**
-routing.outputs.set();
- @alias
- */
-let audioContext = document.getElementById('player');
-routing.outputs.set('channel', audioContext);
+let track = './demos/audio/sample.mp3';
 
 // 1 . Create audio context
-let audioContext = new BaseContext();
+window.AudioContext = window.AudioContext||window.webkitAudioContext;
+let ctx = new AudioContext();
+ctx.src = track;
+
+ctx.autoplay = true;
 // 2 . In ctx create sources <audio>, oscillator, steam
-let context = new Con
+// ctx.createMediaElementSource();
 
 // 3 . Effects, reverb, biquad filter, panner, compressor
 
