@@ -1,5 +1,5 @@
 export default class SourceNode {
-    constructor (audioCtx) {
-        this.outputs = [];
+    constructor () {
+        this.audioContext = [];
     }
 }
