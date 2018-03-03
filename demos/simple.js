@@ -4,6 +4,8 @@
 // import AudioContext from "../core/audio/context";
 
 import AudioSource from "../core/audio/audio-source";
+import Player from "../core/player/player";
+import VolumePlugin from "../core/audio/plugins/volume-plugin";
 
 let track = './demos/audio/sample.mp3';
 
@@ -12,6 +14,9 @@ audioSrc.load(track);
 
 // audioSrc.gain(1);
 // audioSrc.start();
+
+let player = new Player(audioSrc);
+player.add('_volume', new VolumePlugin());
 
 // 2 . In ctx create sources <audio>, oscillator, steam
 // ctx.createMediaElementSource();

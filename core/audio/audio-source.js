@@ -1,3 +1,5 @@
+import AudioPlugin from "./plugins/audio-plugin";
+
 export default class AudioSource {
 
     constructor() {
@@ -15,6 +17,7 @@ export default class AudioSource {
         this.volume = this.ctx.createGain();
         this.src.connect(this.volume);
         this.volume.connect(this.ctx.destination);
+
     }
 
     load(file) {
@@ -23,6 +26,9 @@ export default class AudioSource {
         request.responseType = 'arraybuffer';
 
         request.onload = function () {
+            /**
+             * @type {AudioSource}
+             */
             const plugin = this;
             this.ctx.decodeAudioData(request.response, function (buffer) {
                 plugin.src.buffer = buffer;

@@ -1,12 +1,8 @@
-import AudioPlugin from "./audio-plugins";
+import AudioPlugin from "./audio-plugin";
 
-export default class VolumePlugin extends AudioPlugin{
-    constructor(audioCtx) {
-        super(audioCtx);
-    }
-
-    connect()
+export default class VolumePlugin extends AudioPlugin {
+    connect(audioContext)
     {
-        this.ctx.createGain().connect(this.ctx.destination);
+        audioContext.connect(this.ctx.destination);
     }
 }
