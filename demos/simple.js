@@ -1,32 +1,26 @@
-// import BaseAudioContext from 'core/audio/context';
-// import Graph from "../core/audio/nodes/graph-node";
-// import Routing from "../core/audio/routing";
-// import AudioContext from "../core/audio/context";
-
 import AudioSource from "../core/audio/audio-source";
 import Player from "../core/player/player";
 import VolumePlugin from "../core/audio/plugins/volume-plugin";
+import VuePlugin from "../core/audio/plugins/vue-plugin";
+import ReverbPlugin from "../core/audio/plugins/reverb-plugin";
 
 let track = './demos/audio/sample.mp3';
 
 let audioSrc = new AudioSource();
 audioSrc.load(track);
-// audioSrc.start();
-// audioSrc.gain(1);
-
-
 let player = new Player(audioSrc);
+player.source.src.loop = true;
 player.add('_volume', new VolumePlugin());
-
 player.volume(1);
-
 player.play(0);
 
-// 2 . In ctx create sources <audio>, oscillator, steam
-// ctx.createMediaElementSource();
+let canvas = document.getElementById('vue');
 
-// 3 . Effects, reverb, biquad filter, panner, compressor
+player.add('_vue', new VuePlugin());
 
-// 4 . Destination
+function step(timestamp) {
+    player.plugins.get('_vue').draw(canvas);
+    requestAnimationFrame(step);
+};
 
-// Sources + effects = Destination
+requestAnimationFrame(step);
