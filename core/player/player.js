@@ -15,27 +15,44 @@ export default class Player {
     }
 
     /**
+     *
+     * @returns {GainNode}
+     */
+    getVolume() {
+        return this.plugins.get("_volume").subject;
+    }
+
+
+    /**
      * @param {string} pluginName
      * @param {AudioPlugin} pluginClass
      */
     add(pluginName, pluginClass) {
-        // new VolumePlugin();
-// console.log((new (pluginClass))());
         try {
             this.plugins.set(pluginName, pluginClass);
-            pluginClass.connect(this.source.ctx);
+            pluginClass.connect(this.source);
+            // this.source.src.connect(pluginClass);
         } catch (e) {
             console.log(e);
         }
-            // this.plugins.set(pluginName, new (pluginClass.name)());
-        // else {
-            // error
-        // }
     }
 
-    play() {
-        for(const plugin of this.plugins) {
-            plugin.connect();
-        }
+    play(int) {
+        // for(const plugin of this.plugins.values()) {
+        //     plugin.connect(this.source.ctx);
+        // }
+        // this.source.start(int);
+        this.source.src.start(int);
+    }
+
+    volume(int) {
+        // console.log(this.getVolume().gain.value);
+        this.getVolume().gain.setTargetAtTime(int, this.source.ctx.currentTime, 0);
+        // this.getVolume().gain.value = int;
+        // console.log(this.getVolume().gain.value);
+        // console.log(int);
+        //
+        // this.plugins.get("_volume").subject.gain.value = int;
+        // console.log(this.plugins.get("_volume").subject.gain.value);
     }
 }

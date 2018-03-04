@@ -11,12 +11,16 @@ let track = './demos/audio/sample.mp3';
 
 let audioSrc = new AudioSource();
 audioSrc.load(track);
-
-// audioSrc.gain(1);
 // audioSrc.start();
+// audioSrc.gain(1);
+
 
 let player = new Player(audioSrc);
 player.add('_volume', new VolumePlugin());
+
+player.volume(1);
+
+player.play(0);
 
 // 2 . In ctx create sources <audio>, oscillator, steam
 // ctx.createMediaElementSource();

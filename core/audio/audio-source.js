@@ -14,9 +14,9 @@ export default class AudioSource {
         /**
          * @type {GainNode}
          */
-        this.volume = this.ctx.createGain();
-        this.src.connect(this.volume);
-        this.volume.connect(this.ctx.destination);
+        // this.volume = this.ctx.createGain();
+        // this.src.connect(this.volume);
+        // this.volume.connect(this.ctx.destination);
 
     }
 
@@ -41,11 +41,11 @@ export default class AudioSource {
         request.send();
     }
 
-    start(int) {
-        this.src.start(int);
-    }
-
-    gain(float) {
-        this.volume.gain.setTargetAtTime(float, this.ctx.currentTime, 0);
-    }
+    // start(int) {
+    //     this.src.start(int);
+    // }
+    //
+    // gain(float) {
+    //     this.volume.gain.setTargetAtTime(float, this.ctx.currentTime, 0);
+    // }
 }
