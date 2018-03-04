@@ -41,7 +41,12 @@ export default class Player {
      * @param {number} int
      */
     play(int) {
+        // const tmpBuffer = this.source.ctx.createBufferSource();
+        // tmpBuffer.buffer = this.source.src.buffer;
+
         this.source.src.start(int);
+
+        // this.source.src.buffer = tmpBuffer.buffer;
     }
 
     volume(int) {
