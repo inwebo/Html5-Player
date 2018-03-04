@@ -1,7 +1,9 @@
 import AudioPlugin from "../audio/plugins/audio-plugin";
-import VolumePlugin from "../audio/plugins/volume-plugin";
 
 export default class Player {
+    /**
+     * @param {AudioSource} audioSource
+     */
     constructor (audioSource) {
         /**
          * @type {AudioSource}
@@ -22,37 +24,27 @@ export default class Player {
         return this.plugins.get("_volume").subject;
     }
 
-
     /**
      * @param {string} pluginName
-     * @param {AudioPlugin} pluginClass
+     * @param {AudioPlugin} pluginInstance
      */
-    add(pluginName, pluginClass) {
+    add(pluginName, pluginInstance) {
         try {
-            this.plugins.set(pluginName, pluginClass);
-            pluginClass.connect(this.source);
-            // this.source.src.connect(pluginClass);
+            this.plugins.set(pluginName, pluginInstance);
+            pluginInstance.connect(this.source);
         } catch (e) {
             console.log(e);
         }
     }
 
+    /**
+     * @param {number} int
+     */
     play(int) {
-        // for(const plugin of this.plugins.values()) {
-        //     plugin.connect(this.source.ctx);
-        // }
-        // this.source.start(int);
         this.source.src.start(int);
     }
 
     volume(int) {
-        // console.log(this.getVolume().gain.value);
-        this.getVolume().gain.setTargetAtTime(int, this.source.ctx.currentTime, 0);
-        // this.getVolume().gain.value = int;
-        // console.log(this.getVolume().gain.value);
-        // console.log(int);
-        //
-        // this.plugins.get("_volume").subject.gain.value = int;
-        // console.log(this.plugins.get("_volume").subject.gain.value);
+        this.getVolume().gain.setTargetAtTime(int, this.source.ctx.currentTime, 0)
     }
 }
