@@ -13,6 +13,6 @@ export default class VolumePlugin extends AudioPlugin {
     {
         this.subject = audioSource.ctx.createGain();
         audioSource.src.connect(this.subject);
-        // this.subject.connect(audioSource.ctx.destination);
+        this.subject.connect(audioSource.ctx.destination);
     }
 }
