@@ -1,5 +1,3 @@
-import AudioPlugin from "./plugins/audio-plugin";
-
 export default class AudioSource {
 
     constructor() {
@@ -11,13 +9,6 @@ export default class AudioSource {
          * @type {AudioBufferSourceNode}
          */
         this.src = this.ctx.createBufferSource();
-        /**
-         * @type {GainNode}
-         */
-        // this.volume = this.ctx.createGain();
-        // this.src.connect(this.volume);
-        // this.volume.connect(this.ctx.destination);
-
     }
 
     load(file) {
@@ -40,12 +31,4 @@ export default class AudioSource {
         }.bind(this);
         request.send();
     }
-
-    // start(int) {
-    //     this.src.start(int);
-    // }
-    //
-    // gain(float) {
-    //     this.volume.gain.setTargetAtTime(float, this.ctx.currentTime, 0);
-    // }
 }
